@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(uGet)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DNDEBUG")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DNDEBUG -mwindows")
 
 add_compile_definitions(HAVE_GLIB)
 
