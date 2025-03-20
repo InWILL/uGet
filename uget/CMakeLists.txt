@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required(VERSION 3.10)
 
 project(uget)
 
@@ -18,7 +18,7 @@ add_library( uget
              UgetRpc.c
              UgetOption.c
              UgetData.c
-			 UgetFiles.c
+             UgetFiles.c
              UgetNode.c
              UgetNode-compare.c
              UgetNode-filter.c
@@ -38,5 +38,6 @@ add_library( uget
              UgetPluginMedia.c
              UgetPluginAgent.c
              UgetPluginMega.c
+             UgetRss.c
            )
 

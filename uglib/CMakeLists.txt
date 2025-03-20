@@ -1,12 +1,13 @@
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required(VERSION 3.10)
 
 project(uglib)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DNDEBUG")
 
-include_directories( ${CURL_INCLUDE_DIR}
-                     ${CMAKE_CURRENT_SOURCE_DIR}
-                   )
+include_directories(
+  ${CURL_INCLUDE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 add_library( uglib
              STATIC
