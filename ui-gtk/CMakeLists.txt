@@ -12,7 +12,6 @@ include_directories(
 )
 
 # 查找依赖库
-find_package(PkgConfig REQUIRED)
 pkg_check_modules(CURL REQUIRED libcurl)
 pkg_check_modules(LIBGCRYPT REQUIRED libgcrypt)
 pkg_check_modules(LIBCRYPTO REQUIRED libcrypto)
@@ -34,6 +33,8 @@ set(SOURCES
     UgtkMenubar.c  UgtkMenubar-ui.c  
     UgtkApp.c  UgtkApp-ui.c  UgtkApp-callback.c  
     UgtkApp-timeout.c  UgtkApp-main.c
+
+    ../Windows/resources/uget.rc
 )
 
 # 生成可执行文件
@@ -62,9 +63,6 @@ target_link_libraries(uget-gtk
 )
 
 target_link_libraries(uget-gtk Ws2_32)
-
-# 添加编译选项
-target_compile_definitions(uget-gtk PRIVATE -DUG_DATADIR="${CMAKE_INSTALL_PREFIX}/share")
 
 # 添加 include 目录
 target_include_directories(uget-gtk PRIVATE
