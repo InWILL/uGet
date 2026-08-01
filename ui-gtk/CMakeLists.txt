@@ -15,24 +15,26 @@ include_directories(
 pkg_check_modules(CURL REQUIRED libcurl)
 pkg_check_modules(LIBGCRYPT REQUIRED libgcrypt)
 pkg_check_modules(LIBCRYPTO REQUIRED libcrypto)
-pkg_check_modules(GTK REQUIRED gtk+-3.0)
+pkg_check_modules(GTK REQUIRED gtk4)
 pkg_check_modules(LIBNOTIFY REQUIRED libnotify)
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 
 # 源文件
 set(SOURCES
-    UgtkUtil.c  UgtkConfig.c  UgtkSetting.c  
-    UgtkNodeList.c  UgtkNodeTree.c  UgtkNodeView.c  
-    UgtkTraveler.c  UgtkSummary.c  
-    UgtkTrayIcon.c  UgtkBanner.c  
-    UgtkSequence.c  UgtkSelector.c  
-    UgtkProxyForm.c  UgtkDownloadForm.c  UgtkCategoryForm.c  
-    UgtkNodeDialog.c  UgtkBatchDialog.c  
-    UgtkScheduleForm.c  UgtkSettingForm.c  UgtkSettingDialog.c  
-    UgtkConfirmDialog.c  UgtkAboutDialog.c  
-    UgtkMenubar.c  UgtkMenubar-ui.c  
-    UgtkApp.c  UgtkApp-ui.c  UgtkApp-callback.c  
-    UgtkApp-timeout.c  UgtkApp-main.c
+    # UgtkUtil.c  UgtkConfig.c  UgtkSetting.c  
+    # UgtkNodeList.c  UgtkNodeTree.c  UgtkNodeView.c  
+    # UgtkTraveler.c  UgtkSummary.c  
+    # UgtkTrayIcon.c  UgtkBanner.c  
+    # UgtkSequence.c  UgtkSelector.c  
+    # UgtkProxyForm.c  UgtkDownloadForm.c  UgtkCategoryForm.c  
+    # UgtkNodeDialog.c  UgtkBatchDialog.c  
+    # UgtkScheduleForm.c  UgtkSettingForm.c  UgtkSettingDialog.c  
+    # UgtkConfirmDialog.c  UgtkAboutDialog.c  
+    # UgtkMenubar.c  UgtkMenubar-ui.c  
+    # UgtkApp.c  UgtkApp-ui.c  UgtkApp-callback.c  
+    # UgtkApp-timeout.c  UgtkApp-main.c
+
+    test.c
 
     ../Windows/resources/uget.rc
 )

@@ -286,7 +286,7 @@ int  main (int argc, char** argv)
 	}
 
 	// GTK+
-	gtk_init (&argc, &argv);
+	gtk_init();
 	// SSL
 #if defined USE_GNUTLS || defined USE_OPENSSL
 	init_locks ();
