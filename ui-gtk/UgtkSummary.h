@@ -62,7 +62,7 @@ struct UgtkSummary
 
 	struct
 	{
-		GtkMenu*    self;       // (GtkMenu) pop-up menu
+		GMenu*    self;       // (GtkMenu) pop-up menu
 		GtkWidget*  copy;       // GtkMenuItem
 		GtkWidget*  copy_all;   // GtkMenuItem
 	} menu;

@@ -63,7 +63,7 @@ void  ugtk_traveler_init (UgtkTraveler* traveler, UgtkApp* app)
 			GTK_TREE_MODEL (traveler->state.model));
 
 	// category
-	traveler->category.self = gtk_scrolled_window_new (NULL, NULL);
+	traveler->category.self = gtk_scrolled_window_new ();
 	traveler->category.view = (GtkTreeView*) ugtk_node_view_new_for_category ();
 	traveler->category.model = ugtk_node_tree_new (&app->sorted, TRUE);
 	ugtk_node_tree_set_prefix (traveler->category.model, &app->mix, 1);

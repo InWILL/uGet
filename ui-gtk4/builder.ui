@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkWindow" id="window">
+    <property name="title">Hello GTK Builder</property>
+    <property name="default-width">300</property>
+    <property name="default-height">200</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="label">Hello, World!</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="button">
+            <property name="label">Click Me</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -21,10 +21,11 @@ pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 
 # 源文件
 set(SOURCES
-    # UgtkUtil.c  UgtkConfig.c  UgtkSetting.c  
+    UgtkUtil.c  UgtkConfig.c  UgtkSetting.c  
     # UgtkNodeList.c  UgtkNodeTree.c  UgtkNodeView.c  
     # UgtkTraveler.c  UgtkSummary.c  
-    # UgtkTrayIcon.c  UgtkBanner.c  
+    # UgtkTrayIcon.c  
+    UgtkBanner.c  
     # UgtkSequence.c  UgtkSelector.c  
     # UgtkProxyForm.c  UgtkDownloadForm.c  UgtkCategoryForm.c  
     # UgtkNodeDialog.c  UgtkBatchDialog.c  

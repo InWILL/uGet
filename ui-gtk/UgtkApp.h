@@ -42,10 +42,10 @@
 #include <UgetRpc.h>
 #include <UgetRss.h>
 #include <UgtkSetting.h>
-#include <UgtkTrayIcon.h>
+// #include <UgtkTrayIcon.h>
 #include <UgtkBanner.h>
-#include <UgtkMenubar.h>
-#include <UgtkSummary.h>
+// #include <UgtkMenubar.h>
+// #include <UgtkSummary.h>
 #include <UgtkTraveler.h>
 
 #ifdef __cplusplus
@@ -110,7 +110,7 @@ struct UgtkApp
 	// Clipboard
 	struct UgtkClipboard
 	{
-		GtkClipboard*  self;
+		GdkClipboard*  self;
 		gchar*         text;
 		GRegex*        regex;
 		gboolean       processing;
@@ -131,11 +131,11 @@ struct UgtkApp
 
 	// -------------------------------------------------------
 	// GUI: Main Window and Tray Icon
-	GtkAccelGroup*   accel_group;
-	UgtkTrayIcon     trayicon;
+	// GtkAccelGroup*   accel_group;
+	// UgtkTrayIcon     trayicon;
 	UgtkBanner       banner;
-	UgtkMenubar      menubar;
-	UgtkSummary      summary;
+	// UgtkMenubar      menubar;
+	// UgtkSummary      summary;
 	UgtkTraveler     traveler;   // (UgetNode) node traveler
 
 	// --------------------------------
@@ -151,7 +151,7 @@ struct UgtkApp
 	// status bar (initialize in UgtkApp-ui.c)
 	struct UgtkStatusbar
 	{
-		GtkStatusbar*  self;
+		GtkWidget*  self;
 		GtkLabel*      down_speed;
 		GtkLabel*      up_speed;
 	} statusbar;

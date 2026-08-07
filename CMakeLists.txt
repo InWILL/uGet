@@ -16,3 +16,4 @@ include_directories(
 add_subdirectory(uglib)
 add_subdirectory(uget)
 add_subdirectory(ui-gtk)
+add_subdirectory(ui-gtk4)
