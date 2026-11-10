@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+<menu id="menubar-model">
+    <submenu>
+      <attribute name="label">File</attribute>
+      <section>
+        <item>
+          <attribute name="label">New Download...</attribute>
+          <attribute name="action">app.new</attribute>
+        </item>
+        <item>
+          <attribute name="label">New Category...</attribute>
+        </item>
+        <item>
+          <attribute name="label">New Torrent...</attribute>
+        </item>
+        <item>
+          <attribute name="label">New Metalink...</attribute>
+        </item>
+        <item>
+          <attribute name="label">Batch Downloads...</attribute>
+        </item>
+        <item>
+          <attribute name="label">Quit</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>  
+      <attribute name="label">Edit</attribute>
+      <section>
+        <item>
+          <attribute name="label">Show Status Bar</attribute>
+          <attribute name="action">win.show-statusbar</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label">View</attribute>
+      <section>
+        <item>
+          <attribute name="label">Toolbar</attribute>
+        </item>
+        <item>
+          <attribute name="label">Status Bar</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label">Category</attribute>
+      <section>
+        <item>
+          <attribute name="label">New Category...</attribute>
+        </item>
+        <item>
+          <attribute name="label">Delete Category</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label">Download</attribute>
+      <section>
+        <item>
+          <attribute name="label">New</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label">Help</attribute>
+      <section>
+        <item>
+          <attribute name="label">About</attribute>
+        </item>
+      </section>
+    </submenu>
+  </menu>
+</interface>

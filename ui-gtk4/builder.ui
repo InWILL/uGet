@@ -1,23 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkWindow" id="window">
-    <property name="title">Hello GTK Builder</property>
-    <property name="default-width">300</property>
-    <property name="default-height">200</property>
-    <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkLabel" id="label">
-            <property name="label">Hello, World!</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button">
-            <property name="label">Click Me</property>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
+<object class="GtkApplicationWindow" id="window">
+  <property name="title">Uget</property>
+  <property name="default-width">800</property>
+  <property name="default-height">600</property>
+  <child>
+    <object class="GtkBox">
+      <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+      <child>
+        <object class="GtkPopoverMenuBar">
+          <property name="menu-model">menubar-model</property>
+        </object>
+      </child>
+      <child>
+        <object class="GtkPaned">
+          <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+          <property name="vexpand">true</property>
+          <child>
+            <object class="GtkBox">
+              <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+              <child>
+                <object class="GtkLabel">
+                  <property name="label">Status</property>
+                </object>
+              </child>
+              <child>
+                <object class="GtkListBox">
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label">All Status</property>
+                    </object>
+                  </child>
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label">Active</property>
+                    </object>
+                  </child>
+                </object>
+              </child>
+              <child>
+                <object class="GtkLabel">
+                  <property name="label">Category</property>
+                </object>
+              </child>
+              <child>
+                <object class="GtkListBox">
+                  <property name="vexpand">true</property>
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label">All Category</property>
+                    </object>
+                  </child>
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label">New 0</property>
+                    </object>
+                  </child>
+                </object>
+              </child>
+            </object>
+          </child>
+          <child>
+            <object class="GtkBox">
+            <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+              <child>
+                <object class="GtkBox">
+                  <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                  <child>
+                    <object class="GtkButton">
+                      <property name="label">Button 1</property>
+                    </object>
+                  </child>
+                  <child>
+                    <object class="GtkButton">
+                      <property name="label">Button 1</property>
+                    </object>
+                  </child>
+                </object>
+              </child>
+              <child>
+                <object class="GtkScrolledWindow">
+                  <property name="vexpand">true</property>
+                  <child>
+                    <object class="GtkColumnView">
+                      <property name="vexpand">true</property>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Name</property>
+                          <property name="resizable">True</property>
+                          <property name="expand">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Complete</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Size</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">%</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Elapsed</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Left</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Speed</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">UpSpeed</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Ratio</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Retry</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkColumnViewColumn">
+                          <property name="title">Added On</property>
+                          <property name="resizable">True</property>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+                </object>
+              </child>
+              <child>
+                <object class="GtkListBox">
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label">All Category</property>
+                    </object>
+                  </child>
+                </object>
+              </child>
+            </object>
+          </child>
+        </object>
+      </child>
+      <child>
+        <object class="GtkActionBar">
+          <child>
+            <object class="GtkLabel" id="button2">
+              <property name="label">Button 2</property>
+            </object>
+          </child>
+        </object>
+      </child>
+    </object>
+  </child>
+</object>
 </interface>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <!-- The virtual path prefix used in your C code strings -->
+  <gresource prefix="/com/uget/gtk4">
+    <!-- List every split module UI file relative to this xml file's location -->
+    <file preprocess="xml-stripblanks">builder.ui</file>
+    <file preprocess="xml-stripblanks">menu.ui</file>
+  </gresource>
+</gresources>

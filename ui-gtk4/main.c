@@ -1,18 +1,39 @@
-#include <gtk/gtk.h>
+#include "UgtkApp.h"
 
 
 static void app_activate(GtkApplication *app, gpointer user_data) {
-    GtkBuilder *builder = gtk_builder_new_from_file("builder.ui");
-    GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
-    GtkWidget *button = GTK_WIDGET(gtk_builder_get_object(builder, "hello_button"));
-    
-    gtk_window_set_application(GTK_WINDOW(window), app);
-    // Add signal connection here if needed
-    
-    gtk_window_present(
-        GTK_WINDOW(window)
-    );
-    g_object_unref(builder);
+    GtkBuilder *builder = gtk_builder_new();
+    GError *error = NULL;
+
+     /* Load menu XML. */
+    if (!gtk_builder_add_from_resource(
+            builder,
+            "/com/uget/gtk4/menu.ui",
+            &error)) {
+        g_error("Menu loading failed: %s", error->message);
+    }
+
+    /* Load window XML into the SAME builder. */
+    if (!gtk_builder_add_from_resource(
+            builder,
+            "/com/uget/gtk4/builder.ui",
+            &error)) {
+        g_error("Window loading failed: %s", error->message);
+    }
+
+    GtkWindow *window = GTK_WINDOW(
+        gtk_builder_get_object(builder, "window"));
+
+    /* Set application ownership. */
+    gtk_window_set_application(window, app);
+
+    gtk_window_present(GTK_WINDOW(window));
+
+    g_object_set_data_full(
+        G_OBJECT(window),
+        "ui-builder",
+        builder,
+        g_object_unref);
 }
 
 

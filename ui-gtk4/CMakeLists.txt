@@ -26,8 +26,32 @@ set(SOURCES
     ../Windows/resources/uget.rc
 )
 
+set(RESOURCE_XML
+    ${CMAKE_CURRENT_SOURCE_DIR}/gresource.xml
+)
+
+set(RESOURCE_C
+    ${CMAKE_CURRENT_BINARY_DIR}/resources.c
+)
+
+add_custom_command(
+    OUTPUT ${RESOURCE_C}
+    COMMAND ${GLIB_COMPILE_RESOURCES}
+            --target=${RESOURCE_C}
+            --sourcedir=${CMAKE_CURRENT_SOURCE_DIR}
+            --generate-source
+            ${RESOURCE_XML}
+    DEPENDS ${RESOURCE_XML}
+    # Optional: Manually list your assets here so CMake rewrites resources.c when assets change
+    # DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/window.ui" "${CMAKE_CURRENT_SOURCE_DIR}/style.css"
+    VERBATIM
+)
+
 # 生成可执行文件
-add_executable(uget-gtk4 ${SOURCES})
+add_executable(uget-gtk4 
+    ${SOURCES}      
+    ${RESOURCE_C}
+)
 
 # 链接静态库和依赖项
 add_library(libuget STATIC IMPORTED)
