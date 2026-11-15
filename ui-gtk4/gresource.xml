@@ -5,5 +5,6 @@
     <!-- List every split module UI file relative to this xml file's location -->
     <file preprocess="xml-stripblanks">builder.ui</file>
     <file preprocess="xml-stripblanks">menu.ui</file>
+    <file preprocess="xml-stripblanks">NewDownload.ui</file>
   </gresource>
 </gresources>

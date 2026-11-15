@@ -6,17 +6,17 @@ static void app_activate(GtkApplication *app, gpointer user_data) {
     GError *error = NULL;
 
      /* Load menu XML. */
-    if (!gtk_builder_add_from_resource(
-            builder,
-            "/com/uget/gtk4/menu.ui",
-            &error)) {
-        g_error("Menu loading failed: %s", error->message);
-    }
+    // if (!gtk_builder_add_from_resource(
+    //         builder,
+    //         "/com/uget/gtk4/menu.ui",
+    //         &error)) {
+    //     g_error("Menu loading failed: %s", error->message);
+    // }
 
     /* Load window XML into the SAME builder. */
     if (!gtk_builder_add_from_resource(
             builder,
-            "/com/uget/gtk4/builder.ui",
+            "/com/uget/gtk4/NewDownload.ui",
             &error)) {
         g_error("Window loading failed: %s", error->message);
     }
