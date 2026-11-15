@@ -1,33 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 <object class="GtkApplicationWindow" id="window">
-    <property name="title">New Download</property>
-    <property name="default-width">600</property>
-    <property name="default-height">400</property>
+<property name="title">New Download</property>
+<property name="default-width">600</property>
+<property name="default-height">400</property>
+<child>
+    <object class="GtkBox">
+    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
     <child>
         <object class="GtkBox">
-        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+        <property name="vexpand">true</property>
         <child>
             <object class="GtkBox">
-            <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+            <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
             <child>
                 <object class="GtkLabel">
-                <property name="label">URL:</property>
+                <property name="label">Category</property>
                 </object>
             </child>
             <child>
-                <object class="GtkEntry" id="url-entry">
-                <property name="hexpand">true</property>
+                <object class="GtkListBox">
+                <child>
+                    <object class="GtkLabel">
+                    <property name="label">All Status</property>
+                    </object>
+                </child>
                 </object>
             </child>
             </object>
         </child>
         <child>
-            <object class="GtkButton" id="download-button">
-            <property name="label">Download</property>
+            <object class="GtkEntry" id="url-entry">
+            <property name="hexpand">true</property>
             </object>
         </child>
         </object>
     </child>
+    <child>
+        <object class="GtkBox">
+        <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+        <property name="halign">end</property>
+        <child>
+            <object class="GtkButton" id="cancel-button">
+            <property name="label">Cancel</property>
+            </object>
+        </child>
+        <child>
+            <object class="GtkButton" id="OK-button">
+            <property name="label">  OK  </property>
+            </object>
+        </child>
+        </object>
+    </child>
+    </object>
+</child>
 </object>
 </interface>
