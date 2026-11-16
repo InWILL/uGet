@@ -31,8 +31,28 @@
             </object>
         </child>
         <child>
-            <object class="GtkEntry" id="url-entry">
+            <object class="GtkNotebook">
             <property name="hexpand">true</property>
+            <child>
+                <object class="GtkLabel">
+                <property name="label">Content for Tab 1</property>
+                </object>
+            </child>
+            <child type="tab">
+                <object class="GtkLabel">
+                <property name="label">Tab 1</property>
+                </object>
+            </child>
+            <child>
+                <object class="GtkLabel">
+                <property name="label">Content for Tab 2</property>
+                </object>
+            </child>
+            <child type="tab">
+                <object class="GtkLabel">
+                <property name="label">Tab 2</property>
+                </object>
+            </child>
             </object>
         </child>
         </object>
