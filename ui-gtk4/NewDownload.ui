@@ -34,13 +34,58 @@
             <object class="GtkNotebook">
             <property name="hexpand">true</property>
             <child>
-                <object class="GtkLabel">
-                <property name="label">Content for Tab 1</property>
+                <object class="GtkBox">
+                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                <child>
+                    <object class="GtkBox">
+                    <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                    <child>
+                        <object class="GtkLabel">
+                        <property name="label">URL:</property>
+                        <property name="width-chars">10</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkEntry">
+                        </object>
+                    </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox">
+                    <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                    <child>
+                        <object class="GtkLabel">
+                        <property name="label">Mirrors:</property>
+                        <property name="width-chars">10</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkEntry">
+                        </object>
+                    </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox">
+                    <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                    <child>
+                        <object class="GtkLabel">
+                        <property name="label">File:</property>
+                        <property name="width-chars">10</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkEntry">
+                        </object>
+                    </child>
+                    </object>
+                </child>
                 </object>
             </child>
             <child type="tab">
                 <object class="GtkLabel">
-                <property name="label">Tab 1</property>
+                <property name="label">General</property>
                 </object>
             </child>
             <child>
@@ -50,7 +95,7 @@
             </child>
             <child type="tab">
                 <object class="GtkLabel">
-                <property name="label">Tab 2</property>
+                <property name="label">Advanced</property>
                 </object>
             </child>
             </object>
