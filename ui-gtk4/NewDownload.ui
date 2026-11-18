@@ -8,28 +8,9 @@
     <object class="GtkBox">
     <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
     <child>
-        <object class="GtkBox">
-        <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+        <object class="GtkNotebook">
+        <property name="tab-pos">left</property>
         <property name="vexpand">true</property>
-        <child>
-            <object class="GtkBox">
-            <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-            <child>
-                <object class="GtkLabel">
-                <property name="label">Category</property>
-                </object>
-            </child>
-            <child>
-                <object class="GtkListBox">
-                <child>
-                    <object class="GtkLabel">
-                    <property name="label">All Status</property>
-                    </object>
-                </child>
-                </object>
-            </child>
-            </object>
-        </child>
         <child>
             <object class="GtkNotebook">
             <property name="hexpand">true</property>
@@ -81,6 +62,36 @@
                     </child>
                     </object>
                 </child>
+                <child>
+                    <object class="GtkBox">
+                    <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                    <child>
+                        <object class="GtkLabel">
+                        <property name="label">Referrer:</property>
+                        <property name="width-chars">10</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkEntry">
+                        </object>
+                    </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox">
+                    <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                    <child>
+                        <object class="GtkLabel">
+                        <property name="label">Max Connections:</property>
+                        <property name="width-chars">10</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkEntry">
+                        </object>
+                    </child>
+                    </object>
+                </child>
                 </object>
             </child>
             <child type="tab">
@@ -98,6 +109,21 @@
                 <property name="label">Advanced</property>
                 </object>
             </child>
+            </object>
+        </child>
+        <child type="tab">
+            <object class="GtkLabel">
+            <property name="label">Category</property>
+            </object>
+        </child>
+        <child>
+            <object class="GtkLabel">
+            <property name="label">Content for Tab 2</property>
+            </object>
+        </child>
+        <child type="tab">
+            <object class="GtkLabel">
+            <property name="label">Options</property>
             </object>
         </child>
         </object>
