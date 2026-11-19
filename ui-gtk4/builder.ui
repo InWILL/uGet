@@ -82,73 +82,118 @@
                 <object class="GtkScrolledWindow">
                 <property name="vexpand">true</property>
                 <child>
-                    <object class="GtkColumnView">
+                    <object class="GtkColumnView" id="task_view">
                     <property name="vexpand">true</property>
+                    <property name="show-row-separators">true</property>
+                    <property name="show-column-separators">true</property>
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Name</property>
-                        <property name="resizable">True</property>
-                        <property name="expand">True</property>
+                        <property name="resizable">true</property>
+                        <property name="expand">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="name_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Complete</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="complete_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Size</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="size_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">%</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="percent_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Elapsed</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="elapsed_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Left</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="left_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Speed</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="speed_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">UpSpeed</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="upspeed_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Ratio</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="ratio_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Retry</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="retry_factory"/>
+                        </property>
                         </object>
                     </child>
+
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Added On</property>
-                        <property name="resizable">True</property>
+                        <property name="resizable">true</property>
+                        <property name="factory">
+                            <object class="GtkSignalListItemFactory" id="added_factory"/>
+                        </property>
                         </object>
                     </child>
                     </object>

@@ -34,6 +34,11 @@ set(RESOURCE_C
     ${CMAKE_CURRENT_BINARY_DIR}/resources.c
 )
 
+find_program(GLIB_COMPILE_RESOURCES
+    NAMES glib-compile-resources
+    REQUIRED
+)
+
 add_custom_command(
     OUTPUT ${RESOURCE_C}
     COMMAND ${GLIB_COMPILE_RESOURCES}
