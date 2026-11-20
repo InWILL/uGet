@@ -85,14 +85,27 @@
                     <object class="GtkColumnView" id="task_view">
                     <property name="vexpand">true</property>
                     <property name="show-row-separators">true</property>
-                    <property name="show-column-separators">true</property>
+                    <property name="model">
+                        <object class="GtkSingleSelection">
+                        <property name="model">
+                        <!-- The data model where items live -->
+                            <object class="GListStore" id="my_store">
+                            <!-- Replace with your custom GObject type or GtkStringObject -->
+                            <property name="item-type">RowItem</property>
+                        </object>
+                        </property>
+                        </object>
+                    </property>
                     <child>
                         <object class="GtkColumnViewColumn">
                         <property name="title">Name</property>
                         <property name="resizable">true</property>
                         <property name="expand">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="name_factory"/>
+                            <object class="GtkSignalListItemFactory" id="name_factory">
+                            <signal name="setup" handler="on_name_setup"/>
+                            <signal name="bind" handler="on_name_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
