@@ -7,42 +7,23 @@ ui_inc = include_directories(
   '../uglib',
 )
 
-# GLib resource compiler
-glib_compile_resources = find_program(
-  'glib-compile-resources',
-  required: true,
-)
+gtk_dep = dependency('gtk4')
 
-resource_c = custom_target(
+resources = gnome.compile_resources(
   'gtk4-resources',
-  input: 'gresource.xml',
-  output: 'resources.c',
-  command: [
-    glib_compile_resources,
-    '--target=@OUTPUT@',
-    '--sourcedir=@CURRENT_SOURCE_DIR@',
-    '--generate-source',
-    '@INPUT@',
-  ],
+  'gresource.xml',
 )
 
 # Application sources
 ui_sources = files(
-  'main.c',
-  'window.c',
+  'main.c'
 )
-
-ui_sources += resource_c
 
 # Executable
 executable(
   'uget-gtk4',
-  ui_sources,
+  [ui_sources, resources],
   include_directories: ui_inc,
-  dependencies: common_deps,
-  link_with: [
-    uget_lib,
-    uglib_lib,
-  ],
   install: true,
+  dependencies: gtk_dep,
 )
