@@ -75,7 +75,64 @@
                 </child>
                 <child>
                     <object class="GtkButton">
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Create new item</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">document-save</property>
+                    <property name="tooltip-text" translatable="yes">Save all settings</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">media-playback-start</property>
+                    <property name="tooltip-text" translatable="yes">Set selected download runnable</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">media-playback-pause</property>
+                    <property name="tooltip-text" translatable="yes">Set selected download to pause</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">document-properties</property>
+                    <property name="tooltip-text" translatable="yes">Set selected download properties</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">go-up</property>
+                    <property name="tooltip-text" translatable="yes">Move selected download up</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
                     <property name="icon-name">go-down</property>
+                    <property name="tooltip-text" translatable="yes">Move selected download down</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">go-top</property>
+                    <property name="tooltip-text" translatable="yes">Move selected download to top</property>
+                    <property name="has-frame">false</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                    <property name="icon-name">go-bottom</property>
+                    <property name="tooltip-text" translatable="yes">Move selected download to bottom</property>
                     <property name="has-frame">false</property>
                     </object>
                 </child>
