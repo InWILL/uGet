@@ -16,6 +16,25 @@ G_MODULE_EXPORT void on_name_bind(GtkSignalListItemFactory *factory, GtkListItem
     g_free(name);
 }
 
+static DownloadItem *create_demo_download(const char *name,
+                                          guint64 complete,
+                                          guint64 size,
+                                          int percent,
+                                          gint64 elapsed,
+                                          gint64 added_seconds_ago)
+{
+    gint64 added_on = g_get_real_time() / G_USEC_PER_SEC - added_seconds_ago;
+
+    return g_object_new(DOWNLOAD_TYPE_ITEM,
+                        "name", name,
+                        "complete", complete,
+                        "size", size,
+                        "percent", percent,
+                        "elapsed", elapsed,
+                        "added-on", added_on,
+                        NULL);
+}
+
 static void app_activate(GtkApplication *app, gpointer user_data) {
     download_item_get_type();
 
@@ -39,10 +58,20 @@ static void app_activate(GtkApplication *app, gpointer user_data) {
     }
 
     GListStore *store = G_LIST_STORE(gtk_builder_get_object(builder, "uget_task"));
-    DownloadItem *item1 = download_item_new(NULL);
-    DownloadItem *item2 = download_item_new(NULL);
-    g_object_set(item1, "name", "Alice", NULL);
-    g_object_set(item2, "name", "Bob", NULL);
+    DownloadItem *item1 = create_demo_download(
+        "debian-13.2.0-amd64-netinst.iso",
+        576 * 1024 * 1024,
+        768 * 1024 * 1024,
+        75,
+        342,
+        3600);
+    DownloadItem *item2 = create_demo_download(
+        "uget-2.2.3.tar.gz",
+        1024 * 1024,
+        4 * 1024 * 1024,
+        25,
+        58,
+        120);
     g_list_store_append(store, item1);
     g_list_store_append(store, item2);
     g_object_unref(item1);
