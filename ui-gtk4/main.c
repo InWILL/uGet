@@ -7,6 +7,12 @@ G_MODULE_EXPORT void on_name_setup(GtkSignalListItemFactory *factory, GtkListIte
     gtk_list_item_set_child(list_item, label);
 }
 
+G_MODULE_EXPORT void on_value_setup(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_label_new(NULL);
+    gtk_label_set_xalign(GTK_LABEL(label), 1.0);
+    gtk_list_item_set_child(list_item, label);
+}
+
 G_MODULE_EXPORT void on_name_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
     GtkWidget *label = gtk_list_item_get_child(list_item);
     DownloadItem *item = gtk_list_item_get_item(list_item);
@@ -14,6 +20,67 @@ G_MODULE_EXPORT void on_name_bind(GtkSignalListItemFactory *factory, GtkListItem
     g_object_get(item, "name", &name, NULL);
     gtk_label_set_text(GTK_LABEL(label), name != NULL ? name : "");
     g_free(name);
+}
+
+G_MODULE_EXPORT void on_complete_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_list_item_get_child(list_item);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    guint64 complete;
+    g_object_get(item, "complete", &complete, NULL);
+    char *text = g_format_size_full(complete, G_FORMAT_SIZE_IEC_UNITS);
+    gtk_label_set_text(GTK_LABEL(label), text);
+    g_free(text);
+}
+
+G_MODULE_EXPORT void on_size_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_list_item_get_child(list_item);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    guint64 size;
+    g_object_get(item, "size", &size, NULL);
+    char *text = g_format_size_full(size, G_FORMAT_SIZE_IEC_UNITS);
+    gtk_label_set_text(GTK_LABEL(label), text);
+    g_free(text);
+}
+
+G_MODULE_EXPORT void on_percent_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_list_item_get_child(list_item);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    int percent;
+    g_object_get(item, "percent", &percent, NULL);
+    char *text = g_strdup_printf("%d%%", percent);
+    gtk_label_set_text(GTK_LABEL(label), text);
+    g_free(text);
+}
+
+G_MODULE_EXPORT void on_elapsed_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_list_item_get_child(list_item);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    gint64 elapsed;
+    g_object_get(item, "elapsed", &elapsed, NULL);
+
+    gint64 hours = elapsed / 3600;
+    gint64 minutes = (elapsed % 3600) / 60;
+    gint64 seconds = elapsed % 60;
+    char *text = hours > 0
+        ? g_strdup_printf("%" G_GINT64_FORMAT ":%02" G_GINT64_FORMAT ":%02" G_GINT64_FORMAT,
+                          hours, minutes, seconds)
+        : g_strdup_printf("%" G_GINT64_FORMAT ":%02" G_GINT64_FORMAT,
+                          minutes, seconds);
+    gtk_label_set_text(GTK_LABEL(label), text);
+    g_free(text);
+}
+
+G_MODULE_EXPORT void on_added_on_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *label = gtk_list_item_get_child(list_item);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    gint64 added_on;
+    g_object_get(item, "added-on", &added_on, NULL);
+
+    GDateTime *date_time = added_on > 0 ? g_date_time_new_from_unix_local(added_on) : NULL;
+    char *text = date_time != NULL ? g_date_time_format(date_time, "%Y-%m-%d %H:%M") : g_strdup("");
+    gtk_label_set_text(GTK_LABEL(label), text);
+    g_free(text);
+    g_clear_pointer(&date_time, g_date_time_unref);
 }
 
 static DownloadItem *create_demo_download(const char *name,
@@ -39,9 +106,24 @@ static void app_activate(GtkApplication *app, gpointer user_data) {
     download_item_get_type();
 
     GtkBuilder *builder = gtk_builder_new();
+    // GtkBuilderCScope *scope = GTK_BUILDER_CSCOPE(gtk_builder_cscope_new());
     GError *error = NULL;
 
-     /* Load menu XML. */
+    // gtk_builder_cscope_add_callback_symbols(
+    //     scope,
+    //     "on_name_setup", G_CALLBACK(on_name_setup),
+    //     "on_name_bind", G_CALLBACK(on_name_bind),
+    //     "on_value_setup", G_CALLBACK(on_value_setup),
+    //     "on_complete_bind", G_CALLBACK(on_complete_bind),
+    //     "on_size_bind", G_CALLBACK(on_size_bind),
+    //     "on_percent_bind", G_CALLBACK(on_percent_bind),
+    //     "on_elapsed_bind", G_CALLBACK(on_elapsed_bind),
+    //     "on_added_on_bind", G_CALLBACK(on_added_on_bind),
+    //     NULL);
+    // gtk_builder_set_scope(builder, GTK_BUILDER_SCOPE(scope));
+    // g_object_unref(scope);
+
+    /* Load menu XML. */
     if (!gtk_builder_add_from_resource(
             builder,
             "/com/uget/gtk4/menu.ui",

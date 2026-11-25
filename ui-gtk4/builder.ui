@@ -175,7 +175,10 @@
                         <property name="title">Complete</property>
                         <property name="resizable">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="complete_factory"/>
+                            <object class="GtkSignalListItemFactory" id="complete_factory">
+                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="bind" handler="on_complete_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
@@ -185,7 +188,10 @@
                         <property name="title">Size</property>
                         <property name="resizable">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="size_factory"/>
+                            <object class="GtkSignalListItemFactory" id="size_factory">
+                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="bind" handler="on_size_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
@@ -195,7 +201,10 @@
                         <property name="title">%</property>
                         <property name="resizable">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="percent_factory"/>
+                            <object class="GtkSignalListItemFactory" id="percent_factory">
+                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="bind" handler="on_percent_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
@@ -205,7 +214,10 @@
                         <property name="title">Elapsed</property>
                         <property name="resizable">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="elapsed_factory"/>
+                            <object class="GtkSignalListItemFactory" id="elapsed_factory">
+                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="bind" handler="on_elapsed_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
@@ -265,7 +277,10 @@
                         <property name="title">Added On</property>
                         <property name="resizable">true</property>
                         <property name="factory">
-                            <object class="GtkSignalListItemFactory" id="added_factory"/>
+                            <object class="GtkSignalListItemFactory" id="added_factory">
+                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="bind" handler="on_added_on_bind"/>
+                            </object>
                         </property>
                         </object>
                     </child>
