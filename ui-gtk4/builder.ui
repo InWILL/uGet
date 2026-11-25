@@ -146,12 +146,12 @@
                     <property name="vexpand">true</property>
                     <property name="show-row-separators">true</property>
                     <property name="model">
-                        <object class="GtkSingleSelection">
+                        <object class="GtkMultiSelection">
                         <property name="model">
                         <!-- The data model where items live -->
-                            <object class="GListStore" id="my_store">
+                            <object class="GListStore" id="uget_task">
                             <!-- Replace with your custom GObject type or GtkStringObject -->
-                            <property name="item-type">RowItem</property>
+                            <property name="item-type">DownloadItem</property>
                         </object>
                         </property>
                         </object>

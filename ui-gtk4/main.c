@@ -1,35 +1,5 @@
 #include "UgtkApp.h"
-
-#define ROW_TYPE_ITEM (row_item_get_type())
-G_DECLARE_FINAL_TYPE(RowItem, row_item, ROW, ITEM, GObject)
-
-struct _RowItem {
-    GObject parent_instance;
-    char *name;
-    char *role;
-};
-
-G_DEFINE_TYPE(RowItem, row_item, G_TYPE_OBJECT)
-
-static void row_item_finalize(GObject *object) {
-    RowItem *self = ROW_ITEM(object);
-    g_free(self->name);
-    g_free(self->role);
-    G_OBJECT_CLASS(row_item_parent_class)->finalize(object);
-}
-
-static void row_item_class_init(RowItemClass *klass) {
-    G_OBJECT_CLASS(klass)->finalize = row_item_finalize;
-}
-
-static void row_item_init(RowItem *self) {}
-
-static RowItem *row_item_new(const char *name, const char *role) {
-    RowItem *item = g_object_new(ROW_TYPE_ITEM, NULL);
-    item->name = g_strdup(name);
-    item->role = g_strdup(role);
-    return item;
-}
+#include "DownloadItem.h"
 
 G_MODULE_EXPORT void on_name_setup(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
     GtkWidget *label = gtk_label_new(NULL);
@@ -39,11 +9,16 @@ G_MODULE_EXPORT void on_name_setup(GtkSignalListItemFactory *factory, GtkListIte
 
 G_MODULE_EXPORT void on_name_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
     GtkWidget *label = gtk_list_item_get_child(list_item);
-    RowItem *item = gtk_list_item_get_item(list_item);
-    gtk_label_set_text(GTK_LABEL(label), item->name);
+    DownloadItem *item = gtk_list_item_get_item(list_item);
+    char *name = NULL;
+    g_object_get(item, "name", &name, NULL);
+    gtk_label_set_text(GTK_LABEL(label), name != NULL ? name : "");
+    g_free(name);
 }
 
 static void app_activate(GtkApplication *app, gpointer user_data) {
+    download_item_get_type();
+
     GtkBuilder *builder = gtk_builder_new();
     GError *error = NULL;
 
@@ -63,9 +38,11 @@ static void app_activate(GtkApplication *app, gpointer user_data) {
         g_error("Window loading failed: %s", error->message);
     }
 
-    GListStore *store = G_LIST_STORE(gtk_builder_get_object(builder, "my_store"));
-    RowItem *item1 = row_item_new("Alice", "Admin");
-    RowItem *item2 = row_item_new("Bob", "Editor");
+    GListStore *store = G_LIST_STORE(gtk_builder_get_object(builder, "uget_task"));
+    DownloadItem *item1 = download_item_new(NULL);
+    DownloadItem *item2 = download_item_new(NULL);
+    g_object_set(item1, "name", "Alice", NULL);
+    g_object_set(item2, "name", "Bob", NULL);
     g_list_store_append(store, item1);
     g_list_store_append(store, item2);
     g_object_unref(item1);

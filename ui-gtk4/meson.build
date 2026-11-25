@@ -16,6 +16,7 @@ resources = gnome.compile_resources(
 
 # Application sources
 ui_sources = files(
+  'DownloadItem.c',
   'main.c'
 )
 
