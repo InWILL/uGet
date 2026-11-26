@@ -202,7 +202,7 @@
                         <property name="resizable">true</property>
                         <property name="factory">
                             <object class="GtkSignalListItemFactory" id="percent_factory">
-                            <signal name="setup" handler="on_value_setup"/>
+                            <signal name="setup" handler="on_percent_setup"/>
                             <signal name="bind" handler="on_percent_bind"/>
                             </object>
                         </property>

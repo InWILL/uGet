@@ -42,14 +42,19 @@ G_MODULE_EXPORT void on_size_bind(GtkSignalListItemFactory *factory, GtkListItem
     g_free(text);
 }
 
+G_MODULE_EXPORT void on_percent_setup(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
+    GtkWidget *progressbar = gtk_progress_bar_new();
+    gtk_list_item_set_child(list_item, progressbar);
+}
+
 G_MODULE_EXPORT void on_percent_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
-    GtkWidget *label = gtk_list_item_get_child(list_item);
+    GtkWidget *progressbar = gtk_list_item_get_child(list_item);
     DownloadItem *item = gtk_list_item_get_item(list_item);
     int percent;
     g_object_get(item, "percent", &percent, NULL);
-    char *text = g_strdup_printf("%d%%", percent);
-    gtk_label_set_text(GTK_LABEL(label), text);
-    g_free(text);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(progressbar), percent / 100.0);
+    gtk_progress_bar_set_show_text(GTK_PROGRESS_BAR(progressbar), TRUE);
+    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(progressbar), g_strdup_printf("%d%%", percent));
 }
 
 G_MODULE_EXPORT void on_elapsed_bind(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer user_data) {
@@ -106,22 +111,7 @@ static void app_activate(GtkApplication *app, gpointer user_data) {
     download_item_get_type();
 
     GtkBuilder *builder = gtk_builder_new();
-    // GtkBuilderCScope *scope = GTK_BUILDER_CSCOPE(gtk_builder_cscope_new());
     GError *error = NULL;
-
-    // gtk_builder_cscope_add_callback_symbols(
-    //     scope,
-    //     "on_name_setup", G_CALLBACK(on_name_setup),
-    //     "on_name_bind", G_CALLBACK(on_name_bind),
-    //     "on_value_setup", G_CALLBACK(on_value_setup),
-    //     "on_complete_bind", G_CALLBACK(on_complete_bind),
-    //     "on_size_bind", G_CALLBACK(on_size_bind),
-    //     "on_percent_bind", G_CALLBACK(on_percent_bind),
-    //     "on_elapsed_bind", G_CALLBACK(on_elapsed_bind),
-    //     "on_added_on_bind", G_CALLBACK(on_added_on_bind),
-    //     NULL);
-    // gtk_builder_set_scope(builder, GTK_BUILDER_SCOPE(scope));
-    // g_object_unref(scope);
 
     /* Load menu XML. */
     if (!gtk_builder_add_from_resource(
